@@ -1,4 +1,6 @@
-export interface IBootNotification {
+import { BootNotificationState } from '../enum/ocppState.enum';
+
+interface IBootNotification {
   chargePointVendor: string;
   chargePointModel: string;
   chargePointSerialNumber: string;
@@ -9,3 +11,11 @@ export interface IBootNotification {
   meterType: string;
   meterSerialNumber: string;
 }
+
+interface IBootNotificationRes {
+  status: BootNotificationState;
+  currentTime: string;
+  interval: number;
+}
+
+export { IBootNotificationRes, IBootNotification };

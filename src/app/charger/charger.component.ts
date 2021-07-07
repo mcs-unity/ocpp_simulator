@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ChargerSocket } from '../model/chargersocket.model';
+import { ConnectionState } from '../model/enum/connectionState.enum';
 import { OcppService } from '../service/ocpp.service';
 
 @Component({
@@ -11,15 +12,13 @@ export class ChargerComponent
   extends ChargerSocket
   implements OnInit, AfterViewInit
 {
-  data: any;
-
   constructor(private ocpp: OcppService) {
     super();
   }
 
   ngOnInit(): void {
     const obs = this.message.subscribe((resp) => {
-      this.data = resp;
+      this.connectionState = this.ocpp.bootNotificationRes(resp);
     });
 
     this.AddSubscription(obs);
@@ -30,6 +29,6 @@ export class ChargerComponent
       if (this.connectionState == 'Connected') {
         this.message.next(this.ocpp.bootNotification());
       }
-    }, 10000);
+    }, 1000);
   }
 }

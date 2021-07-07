@@ -22,9 +22,17 @@ a {
 }
 
 .Connected {
-  background: green;
+  background: $green;
 }
 
 .Disconnected {
-  background: red;
+  background: $blue;
+}
+
+.Error {
+  background: $red;
+}
+
+.NotAuthorized {
+  background: $yellow;
 }

@@ -21,7 +21,8 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <p>Available</p>
+          <p *ngIf="connectionState == 'Connected'">Available</p>
+          <p *ngIf="connectionState != 'Connected'">Not available</p>
         </div>
       </div>
     </div>
