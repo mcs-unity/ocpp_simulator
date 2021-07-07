@@ -14,8 +14,10 @@ export class ChargerComponent extends ChargerSocket implements OnInit {
   }
 
   ngOnInit(): void {
-    this.message.subscribe((resp) => {
+    const obs = this.message.subscribe((resp) => {
       this.data = resp;
     });
+
+    this.AddSubscription(obs);
   }
 }

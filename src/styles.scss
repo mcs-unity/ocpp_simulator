@@ -3,7 +3,7 @@
 $green: #00c300;
 $yellow: #fef6d8;
 $red: #c0392b;
-
+$veryLightGray: #f7f7f7;
 $white: #fff;
 
 html,
@@ -13,6 +13,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background: $veryLightGray;
 }
 
 .flex-center {
