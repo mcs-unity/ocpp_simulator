@@ -10,7 +10,7 @@ export class AppComponent {
   chargers: any = [];
 
   constructor() {
-    this.chargers = Array(18)
+    this.chargers = Array(6)
       .fill(0)
       .map((x, i) => i);
   }

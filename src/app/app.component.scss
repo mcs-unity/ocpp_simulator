@@ -1,0 +1,14 @@
+.min-height {
+  min-height: 728px;
+  max-height: 728px;
+  div.scroll {
+    overflow-y: scroll;
+    max-height: 658px;
+  }
+}
+
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 97%;
+}

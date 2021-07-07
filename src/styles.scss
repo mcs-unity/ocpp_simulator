@@ -5,7 +5,7 @@ $yellow: #fef6d8;
 $red: #c0392b;
 $veryLightGray: #f7f7f7;
 $white: #fff;
-
+$boxShadow: 0 0 6px rgba(0, 0, 0, 0.3);
 html,
 body {
   height: 100%;
@@ -27,7 +27,7 @@ body {
 
 .mat-toolbar {
   background: $white;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: $boxShadow;
 }
 
 .mat-form-field-wrapper {

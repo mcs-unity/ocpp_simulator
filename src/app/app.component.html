@@ -6,10 +6,10 @@
     <span>MCS UNITY</span>
     <span class="example-spacer"></span>
     <button mat-icon-button>
-      <mat-icon>favorite</mat-icon>
+      <mat-icon> error_outline </mat-icon>
     </button>
     <button mat-icon-button class="mx-4">
-      <mat-icon>share</mat-icon>
+      <mat-icon> notifications_active </mat-icon>
     </button>
   </mat-toolbar>
 </p>
@@ -38,20 +38,21 @@
       </mat-form-field>
     </div>
     <div class="col-lg-2 flex-center">
-      <button mat-button class="m-auto">
+      <button mat-raised-button matRipple color="accent" class="m-auto">
         <mat-icon>add</mat-icon>
       </button>
     </div>
   </div>
 </mat-card>
 
-<mat-card class="container px-4 py-2">
-  <div class="row">
-    <div *ngFor="let item of chargers" class="col-lg-2">
+<mat-card class="container px-4 py-2 min-height">
+  <div class="row scroll">
+    <div *ngFor="let item of chargers" class="col-lg-2 col-md-2">
       <app-charger></app-charger>
     </div>
   </div>
   <mat-paginator
+    class="bottom"
     [length]="100"
     [pageSize]="10"
     [pageSizeOptions]="[5, 10, 25, 100]"

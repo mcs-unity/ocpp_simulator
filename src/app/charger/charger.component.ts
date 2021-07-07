@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ChargerSocket } from '../model/chargersocket.model';
+import { OcppService } from '../service/ocpp.service';
 
 @Component({
   selector: 'app-charger',
   templateUrl: './charger.component.html',
   styleUrls: ['./charger.component.scss'],
 })
-export class ChargerComponent extends ChargerSocket implements OnInit {
+export class ChargerComponent
+  extends ChargerSocket
+  implements OnInit, AfterViewInit
+{
   data: any;
 
-  constructor() {
+  constructor(private ocpp: OcppService) {
     super();
   }
 
@@ -19,5 +23,13 @@ export class ChargerComponent extends ChargerSocket implements OnInit {
     });
 
     this.AddSubscription(obs);
+  }
+
+  ngAfterViewInit() {
+    setTimeout(() => {
+      if (this.connectionState == 'Connected') {
+        this.message.next(this.ocpp.bootNotification());
+      }
+    }, 10000);
   }
 }

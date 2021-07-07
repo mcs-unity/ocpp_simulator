@@ -1,8 +1,9 @@
 import { Observable, Observer, Subject } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
+import { ConnectionState } from './enum/connectionState.enum';
 
 export class WebsocketService {
-  private connected = new Subject<boolean>();
+  private connected = new Subject<ConnectionState>();
   connected$ = this.connected.asObservable();
 
   private subject!: Subject<MessageEvent>;
@@ -12,7 +13,7 @@ export class WebsocketService {
     try {
       if (!this.subject) {
         this.subject = this.create(url);
-        this.connected.next(true);
+        this.connected.next(ConnectionState.connected);
       }
       return this.subject;
     } catch (error) {

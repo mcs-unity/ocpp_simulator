@@ -1,5 +1,15 @@
+@import "../../styles.scss";
+
 mat-card {
   position: relative;
+}
+
+mat-card:hover {
+  box-shadow: $boxShadow;
+}
+
+a {
+  text-decoration: none;
 }
 
 .circle {
@@ -11,10 +21,10 @@ mat-card {
   border-radius: 10px;
 }
 
-.true {
+.Connected {
   background: green;
 }
 
-.false {
+.Disconnected {
   background: red;
 }
