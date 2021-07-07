@@ -1,21 +1,23 @@
-import { Injectable } from '@angular/core';
 import { Observable, Observer, Subject } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 
-@Injectable({
-  providedIn: 'root',
-})
 export class WebsocketService {
-  constructor() {}
+  private connected = new Subject<boolean>();
+  connected$ = this.connected.asObservable();
 
   private subject!: Subject<MessageEvent>;
+  constructor() {}
 
   public connect(url: string): Subject<MessageEvent> {
-    if (!this.subject) {
-      this.subject = this.create(url);
-      console.log('connected');
+    try {
+      if (!this.subject) {
+        this.subject = this.create(url);
+        this.connected.next(true);
+      }
+      return this.subject;
+    } catch (error) {
+      throw Error('failed to open socket');
     }
-    return this.subject;
   }
 
   private create(url: string): Subject<MessageEvent> {

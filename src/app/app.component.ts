@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ChatService } from './service/chatservice.service';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +7,11 @@ import { ChatService } from './service/chatservice.service';
 })
 export class AppComponent {
   title = 'src';
-  message: any;
+  chargers: any = [];
 
-  constructor(private chatService: ChatService) {
-    this.chatService.message.subscribe((resp) => {
-      this.message = resp;
-    });
-  }
-
-  sendMsg() {
-    this.chatService.message.next({
-      author: 'nasar Eddaoui',
-      message: "hello it's me",
-    });
+  constructor() {
+    this.chargers = Array(18)
+      .fill(0)
+      .map((x, i) => i);
   }
 }
