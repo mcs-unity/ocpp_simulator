@@ -1,5 +1,9 @@
 import { BootNotificationState } from '../enum/ocppState.enum';
 
+interface ICharger extends IBootNotification {
+  charName: string;
+}
+
 interface IBootNotification {
   chargePointVendor: string;
   chargePointModel: string;
@@ -18,4 +22,4 @@ interface IBootNotificationRes {
   interval: number;
 }
 
-export { IBootNotificationRes, IBootNotification };
+export { IBootNotificationRes, IBootNotification, ICharger };

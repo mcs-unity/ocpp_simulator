@@ -1,36 +1,21 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChargerSocket } from '../../model/chargersocket.model';
-import { ConnectionState } from '../../model/enum/connectionState.enum';
-import { OcppService } from '../../service/ocpp.service';
 
 @Component({
   selector: 'app-charger',
   templateUrl: './charger.component.html',
   styleUrls: ['./charger.component.scss'],
 })
-export class ChargerComponent
-  extends ChargerSocket
-  implements OnInit, AfterViewInit
-{
-  constructor(private ocpp: OcppService) {
+export class ChargerComponent extends ChargerSocket implements OnInit {
+  constructor() {
     super();
   }
 
   ngOnInit(): void {
     const obs = this.message.subscribe((resp) => {
-      this.connectionState = this.ocpp.bootNotificationRes(resp);
+      console.log(resp);
     });
 
     this.AddSubscription(obs);
-  }
-
-  ngAfterViewInit() {
-    setTimeout(() => {
-      if (this.connectionState == ConnectionState.notAuthorized) {
-        console.log(JSON.stringify(this.ocpp.bootNotification()));
-
-        this.message.next(this.ocpp.bootNotification());
-      }
-    }, 12000);
   }
 }
