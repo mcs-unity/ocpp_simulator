@@ -29,6 +29,6 @@ export class ChargerComponent
       if (this.connectionState == 'Connected') {
         this.message.next(this.ocpp.bootNotification());
       }
-    }, Math.floor(Math.random() * 10000));
+    }, 12000);
   }
 }

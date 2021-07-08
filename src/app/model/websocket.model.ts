@@ -10,15 +10,11 @@ export class WebsocketService {
   constructor() {}
 
   public connect(url: string): Subject<MessageEvent> {
-    try {
-      if (!this.subject) {
-        this.subject = this.create(url);
-        this.connected.next(ConnectionState.connected);
-      }
-      return this.subject;
-    } catch (error) {
-      throw Error('failed to open socket');
+    if (!this.subject) {
+      this.subject = this.create(url);
+      this.connected.next(ConnectionState.notAuthorized);
     }
+    return this.subject;
   }
 
   private create(url: string): Subject<MessageEvent> {

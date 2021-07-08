@@ -12,8 +12,6 @@ import {
 export class OcppService {
   constructor() {}
 
-  processResponse(data: any) {}
-
   bootNotification(): IBootNotification {
     return {
       chargePointVendor: 'OMSI Tech',
