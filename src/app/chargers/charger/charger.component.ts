@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ChargerSocket } from '../model/chargersocket.model';
-import { ConnectionState } from '../model/enum/connectionState.enum';
-import { OcppService } from '../service/ocpp.service';
+import { ChargerSocket } from '../../model/chargersocket.model';
+import { ConnectionState } from '../../model/enum/connectionState.enum';
+import { OcppService } from '../../service/ocpp.service';
 
 @Component({
   selector: 'app-charger',
@@ -26,7 +26,9 @@ export class ChargerComponent
 
   ngAfterViewInit() {
     setTimeout(() => {
-      if (this.connectionState == 'Connected') {
+      if (this.connectionState == ConnectionState.notAuthorized) {
+        console.log(JSON.stringify(this.ocpp.bootNotification()));
+
         this.message.next(this.ocpp.bootNotification());
       }
     }, 12000);

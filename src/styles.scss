@@ -19,7 +19,7 @@ body {
 }
 
 .flex-center {
-  display: flex;
+  display: flex !important;
   align-items: center;
 }
 
@@ -34,4 +34,8 @@ body {
 
 .mat-form-field-wrapper {
   padding: 0;
+}
+
+.drawer {
+  min-height: 100vh;
 }

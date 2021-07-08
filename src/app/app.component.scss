@@ -1,14 +1,7 @@
-.min-height {
-  min-height: 728px;
-  max-height: 728px;
-  div.scroll {
-    overflow-y: auto;
-    max-height: 658px;
-  }
-}
-
-.bottom {
-  position: absolute;
-  bottom: 0;
-  width: 97%;
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
 }

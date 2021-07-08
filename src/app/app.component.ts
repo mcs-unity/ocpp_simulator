@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AssetsService } from './service/assets.service';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'src';
-  chargers: any = [];
 
-  constructor() {
-    this.chargers = Array(6)
-      .fill(0)
-      .map((x, i) => i);
-  }
+  constructor() {}
 }

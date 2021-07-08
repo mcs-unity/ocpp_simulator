@@ -1,0 +1,45 @@
+<mat-card class="container my-3">
+  <div class="row">
+    <div class="col-lg-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Enter Charger name</mat-label>
+        <input type="text" matInput placeholder="Ex. char13" />
+      </mat-form-field>
+    </div>
+    <div class="col-lg-4 flex-center">
+      <mat-slide-toggle class="mx-5">Connected</mat-slide-toggle>
+      <mat-slide-toggle>Maintenance</mat-slide-toggle>
+    </div>
+    <div class="col-lg-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Charger state</mat-label>
+        <mat-select>
+          <mat-option value="available">Available</mat-option>
+          <mat-option value="preparing">Preparing</mat-option>
+          <mat-option value="charging">Charging</mat-option>
+          <mat-option value="error">Error</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-lg-2 flex-center">
+      <button mat-raised-button matRipple color="accent" class="m-auto">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>
+
+<mat-card class="container px-4 py-2 min-height">
+  <div class="row scroll">
+    <div *ngFor="let item of chargers" class="col-lg-2 col-md-2">
+      <app-charger></app-charger>
+    </div>
+  </div>
+  <mat-paginator
+    class="bottom"
+    [length]="100"
+    [pageSize]="10"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+  >
+  </mat-paginator>
+</mat-card>
