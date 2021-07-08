@@ -3,19 +3,20 @@ import { BootNotificationState } from '../model/enum/ocppState.enum';
 import {
   IBootNotification,
   IBootNotificationRes,
+  ICharger,
 } from '../model/interface/bootNotification.model';
 
-function bootNotification(): IBootNotification {
+function bootNotification(charger: ICharger): IBootNotification {
   return {
-    chargePointVendor: 'OMSI Tech',
-    chargePointModel: 'B-321',
-    chargePointSerialNumber: '1516-4151-42',
-    chargeBoxSerialNumber: 'R453854',
-    firmwareVersion: '1.0.0',
-    iccid: '',
-    imsi: '',
-    meterType: 'AC',
-    meterSerialNumber: 'SR1268RCB',
+    chargePointVendor: charger.chargePointVendor,
+    chargePointModel: charger.chargePointModel,
+    chargePointSerialNumber: charger.chargePointSerialNumber,
+    chargeBoxSerialNumber: charger.chargeBoxSerialNumber,
+    firmwareVersion: charger.firmwareVersion,
+    iccid: charger.iccid,
+    imsi: charger.imsi,
+    meterType: charger.meterType,
+    meterSerialNumber: charger.meterSerialNumber,
   };
 }
 
