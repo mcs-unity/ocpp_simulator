@@ -18,7 +18,7 @@ export class WebsocketService {
   }
 
   private create(url: string): Subject<MessageEvent> {
-    const ws = new WebSocket(url);
+    const ws = new WebSocket(url, ['ocpp1.6']);
 
     const observable = new Observable((observer: Observer<MessageEvent>) => {
       ws.onmessage = observer.next.bind(observer);
