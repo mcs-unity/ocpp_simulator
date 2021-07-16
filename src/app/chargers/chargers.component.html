@@ -32,7 +32,7 @@
 <mat-card class="container px-4 py-2 min-height">
   <div class="row scroll">
     <div *ngFor="let item of chargers" class="col-lg-2 col-md-2">
-      <app-charger></app-charger>
+      <app-charger [charger]="item"></app-charger>
     </div>
   </div>
   <mat-paginator
