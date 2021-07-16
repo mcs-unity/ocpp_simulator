@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  CHAT_URL: 'ws://localhost:8080/ocpp',
+  SOCKET_URL: 'wss://localhost:8080/ocpp',
 };
 
 /*

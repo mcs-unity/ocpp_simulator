@@ -18,7 +18,7 @@ export class ChargerSocket extends SubscriptionDestroyer {
 
   init() {
     this.message = <Subject<any>>(
-      this.websocket.connect(environment.CHAT_URL).pipe(
+      this.websocket.connect(environment.SOCKET_URL).pipe(
         map((response: MessageEvent): any => {
           let data = JSON.parse(response.data);
           return data;
