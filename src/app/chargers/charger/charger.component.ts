@@ -27,7 +27,6 @@ export class ChargerComponent extends ChargerSocket implements OnInit {
     const obs = this.message.subscribe((resp) => {
       console.log(resp);
     });
-
     this.AddSubscription(obs);
   }
 }
