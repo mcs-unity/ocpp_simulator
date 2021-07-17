@@ -14,13 +14,18 @@ export class ChargerComponent extends ChargerSocket implements OnInit {
   @Input() charger!: ICharger;
   constructor() {
     super();
+    const random = Math.floor(Math.random() * 20000) + 5000;
     setTimeout(() => {
-      if (this.connectionState == ConnectionState.notAuthorized) {
-        this.message.next(
-          ocppReq('BootNotification', bootNotification(this.charger))
-        );
-      }
-    }, Math.floor(Math.random() * 20000) + 5000);
+      this.sendBootNotification();
+    }, random);
+  }
+
+  sendBootNotification() {
+    if (this.connectionState == ConnectionState.notAuthorized) {
+      this.message.next(
+        ocppReq('BootNotification', bootNotification(this.charger))
+      );
+    }
   }
 
   ngOnInit(): void {
