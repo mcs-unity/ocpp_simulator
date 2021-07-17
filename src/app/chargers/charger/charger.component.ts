@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ocppReq } from 'src/app/helper/ocpp';
 import { ConnectionState } from 'src/app/model/enum/connectionState.enum';
 import { ICharger } from 'src/app/model/interface/bootNotification.model';
 import { bootNotification } from 'src/app/service/ocpp.service';
@@ -15,7 +16,9 @@ export class ChargerComponent extends ChargerSocket implements OnInit {
     super();
     setTimeout(() => {
       if (this.connectionState == ConnectionState.notAuthorized) {
-        this.message.next(bootNotification(this.charger));
+        this.message.next(
+          ocppReq('BootNotification', bootNotification(this.charger))
+        );
       }
     }, Math.floor(Math.random() * 20000) + 5000);
   }
