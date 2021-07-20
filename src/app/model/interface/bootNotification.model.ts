@@ -1,7 +1,7 @@
 import { BootNotificationState } from '../enum/ocppState.enum';
 
 interface ICharger extends IBootNotification {
-  charName: string;
+  ChargerName: string;
 }
 
 interface IBootNotification {

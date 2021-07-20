@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ocppReq } from 'src/app/helper/ocpp';
 import { ConnectionState } from 'src/app/model/enum/connectionState.enum';
 import { ICharger } from 'src/app/model/interface/bootNotification.model';
@@ -10,14 +10,13 @@ import { ChargerSocket } from '../../model/chargersocket.model';
   templateUrl: './charger.component.html',
   styleUrls: ['./charger.component.scss'],
 })
-export class ChargerComponent extends ChargerSocket implements OnInit {
+export class ChargerComponent
+  extends ChargerSocket
+  implements OnInit, AfterViewInit
+{
   @Input() charger!: ICharger;
   constructor() {
     super();
-    const random = Math.floor(Math.random() * 20000) + 5000;
-    setTimeout(() => {
-      this.sendBootNotification();
-    }, random);
   }
 
   sendBootNotification() {
@@ -29,9 +28,20 @@ export class ChargerComponent extends ChargerSocket implements OnInit {
   }
 
   ngOnInit(): void {
-    const obs = this.message.subscribe((resp) => {
-      console.log(resp);
-    });
-    this.AddSubscription(obs);
+    this.init(this.charger.ChargerName);
+    setTimeout(() => {
+      this.charger;
+      const obs = this.message.subscribe((resp) => {
+        console.log(resp);
+      });
+      this.AddSubscription(obs);
+    }, 1000);
+  }
+
+  ngAfterViewInit() {
+    const random = Math.floor(Math.random() * 20000) + 5000;
+    setTimeout(() => {
+      this.sendBootNotification();
+    }, random);
   }
 }

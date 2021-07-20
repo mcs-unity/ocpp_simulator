@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SubscriptionDestroyer } from '../core/subscriptiondestroyer.model';
+import { ICharger } from '../model/interface/bootNotification.model';
 import { AssetsService } from '../service/assets.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { AssetsService } from '../service/assets.service';
   styleUrls: ['./chargers.component.scss'],
 })
 export class ChargersComponent extends SubscriptionDestroyer implements OnInit {
-  chargers: any = [];
+  chargers: ICharger[] = [];
 
   constructor(private assets: AssetsService) {
     super();

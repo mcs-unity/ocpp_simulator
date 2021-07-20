@@ -13,12 +13,11 @@ export class ChargerSocket extends SubscriptionDestroyer {
   constructor() {
     super();
     this.state();
-    this.init();
   }
 
-  init() {
+  init(charger: string) {
     this.message = <Subject<any>>(
-      this.websocket.connect(environment.SOCKET_URL).pipe(
+      this.websocket.connect(`${environment.SOCKET_URL}/${charger}`).pipe(
         map((response: MessageEvent): any => {
           let data = JSON.parse(response.data);
           return data;
