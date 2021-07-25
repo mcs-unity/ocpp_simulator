@@ -17,6 +17,9 @@ export class ChargerComponent
   @Input() charger!: ICharger;
   constructor() {
     super();
+    setTimeout(() => {
+      this.charger.state = this.connectionState;
+    }, 300);
   }
 
   sendBootNotification() {

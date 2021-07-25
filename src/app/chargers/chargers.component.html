@@ -13,11 +13,12 @@
     <div class="col-lg-3">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Charger state</mat-label>
-        <mat-select>
-          <mat-option value="available">Available</mat-option>
-          <mat-option value="preparing">Preparing</mat-option>
-          <mat-option value="charging">Charging</mat-option>
-          <mat-option value="error">Error</mat-option>
+        <mat-select (selectionChange)="filterStateEvent($event)">
+          <mat-option value="Available">Available</mat-option>
+          <mat-option value="NotAuthorized">Not Authorized</mat-option>
+          <mat-option value="Preparing">Preparing</mat-option>
+          <mat-option value="Charging">Charging</mat-option>
+          <mat-option value="Error">Error</mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -31,15 +32,9 @@
 
 <mat-card class="container px-4 py-2 min-height">
   <div class="row scroll">
-    <div *ngFor="let item of chargers" class="col-lg-2 col-md-2">
+    <div *ngFor="let item of filteredList" class="col-lg-2 col-md-2">
       <app-charger [charger]="item"></app-charger>
     </div>
   </div>
-  <mat-paginator
-    class="bottom"
-    [length]="100"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-  >
-  </mat-paginator>
+  <mat-paginator class="bottom"> </mat-paginator>
 </mat-card>
