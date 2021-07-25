@@ -54,14 +54,15 @@ export class ChargerComponent
     } else {
       data = ocppConvertRes(payload);
     }
-
     switch (data.action) {
       case 'BootNotification':
         if (data.payload.status == BootNotificationState.Accepted) {
-          this.connectionState == ConnectionState.connected;
-          console.log('accepted');
+          this.connectionState = ConnectionState.connected;
+          this.charger.state = this.connectionState;
+          console.log(this.charger.state);
         } else {
-          this.connectionState == ConnectionState.notAuthorized;
+          this.connectionState = ConnectionState.notAuthorized;
+          this.charger.state = this.connectionState;
         }
     }
   }
