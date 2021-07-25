@@ -3,4 +3,6 @@ export enum ConnectionState {
   disconnected = 'Disconnected',
   error = 'Error',
   notAuthorized = 'NotAuthorized',
+  preparing = 'Preparing',
+  charging = 'Charging',
 }
