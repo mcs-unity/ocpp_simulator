@@ -4,6 +4,7 @@ import { BootNotificationState } from '../enum/ocppState.enum';
 interface ICharger extends IBootNotification {
   chargerName: string;
   state: ConnectionState;
+  heartBeatInterval: any;
 }
 
 interface IBootNotification {

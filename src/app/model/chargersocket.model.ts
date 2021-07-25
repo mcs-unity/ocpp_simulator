@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { SubscriptionDestroyer } from '../core/subscriptiondestroyer.model';
 import { ConnectionState } from './enum/connectionState.enum';
