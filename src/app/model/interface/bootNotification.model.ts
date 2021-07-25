@@ -2,7 +2,7 @@ import { ConnectionState } from '../enum/connectionState.enum';
 import { BootNotificationState } from '../enum/ocppState.enum';
 
 interface ICharger extends IBootNotification {
-  ChargerName: string;
+  chargerName: string;
   state: ConnectionState;
 }
 

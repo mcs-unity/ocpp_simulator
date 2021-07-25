@@ -31,7 +31,7 @@ export class ChargerComponent
   }
 
   ngOnInit(): void {
-    this.init(this.charger.ChargerName);
+    this.init(this.charger.chargerName);
     setTimeout(() => {
       this.charger;
       const obs = this.message.subscribe(

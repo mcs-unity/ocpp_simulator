@@ -1,9 +1,9 @@
 [
   {
-    "ChargerName" :"char1",
+    "chargerName" :"char1",
     "chargePointVendor": "OMSI Tech",
     "chargePointModel": "B-321",
-    "chargePointSerialNumber": "1516-4151-42",
+    "chargePointSerialNumber": "1316-4151-42",
     "chargeBoxSerialNumber": "R453854",
     "firmwareVersion": "1.0.0",
     "iccid": "",
@@ -12,7 +12,7 @@
     "meterSerialNumber": "SR1268RCB"
   },
   {
-    "ChargerName" :"char2",
+    "chargerName" :"char2",
     "chargePointVendor": "Vader",
     "chargePointModel": "X32",
     "chargePointSerialNumber": "1516-4151-42",
@@ -24,10 +24,10 @@
     "meterSerialNumber": "SR1268RCB"
   },
   {
-    "ChargerName" :"char3",
+    "chargerName" :"char3",
     "chargePointVendor": "Vader",
     "chargePointModel": "X32",
-    "chargePointSerialNumber": "1516-4151-42",
+    "chargePointSerialNumber": "1516-4131-42",
     "chargeBoxSerialNumber": "R453854",
     "firmwareVersion": "1.0.0",
     "iccid": "",
@@ -36,10 +36,10 @@
     "meterSerialNumber": "SR1268RCB"
   },
   {
-    "ChargerName" :"char4",
+    "chargerName" :"char4",
     "chargePointVendor": "Parato",
     "chargePointModel": "C212",
-    "chargePointSerialNumber": "1516-4151-42",
+    "chargePointSerialNumber": "151-4151-42",
     "chargeBoxSerialNumber": "R453854",
     "firmwareVersion": "1.0.0",
     "iccid": "",
@@ -48,10 +48,10 @@
     "meterSerialNumber": "SR1268RCB"
   },
   {
-    "ChargerName" :"char5",
+    "chargerName" :"char5",
     "chargePointVendor": "Chad Tech",
     "chargePointModel": "R33",
-    "chargePointSerialNumber": "1516-4151-42",
+    "chargePointSerialNumber": "1516-4151-44",
     "chargeBoxSerialNumber": "R453854",
     "firmwareVersion": "1.0.0",
     "iccid": "",
@@ -60,10 +60,10 @@
     "meterSerialNumber": "SR1268RCB"
   },
   {
-    "ChargerName" :"char6",
+    "chargerName" :"char6",
     "chargePointVendor": "Chamo",
     "chargePointModel": "B-3",
-    "chargePointSerialNumber": "1516-4151-42",
+    "chargePointSerialNumber": "1516-411251-42",
     "chargeBoxSerialNumber": "R453854",
     "firmwareVersion": "1.0.0",
     "iccid": "",
@@ -72,10 +72,10 @@
     "meterSerialNumber": "SR1268RCB"
   },
   {
-    "ChargerName" :"char7",
+    "chargerName" :"char7",
     "chargePointVendor": "Chamo",
     "chargePointModel": "B-3",
-    "chargePointSerialNumber": "1516-4151-42",
+    "chargePointSerialNumber": "1516-444151-42",
     "chargeBoxSerialNumber": "R453854",
     "firmwareVersion": "1.0.0",
     "iccid": "",
