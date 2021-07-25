@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { ocppReq } from 'src/app/helper/ocpp';
+import { ocppConvertReq, ocppConvertRes, ocppReq } from 'src/app/helper/ocpp';
 import { ConnectionState } from 'src/app/model/enum/connectionState.enum';
+import { BootNotificationState } from 'src/app/model/enum/ocppState.enum';
 import { ICharger } from 'src/app/model/interface/bootNotification.model';
 import { bootNotification } from 'src/app/service/ocpp.service';
 import { ChargerSocket } from '../../model/chargersocket.model';
@@ -36,7 +37,7 @@ export class ChargerComponent
       this.charger;
       const obs = this.message.subscribe(
         (resp) => {
-          console.log(resp);
+          this.ocppMessage(resp);
         },
         (err) => {
           console.log('asd');
@@ -44,6 +45,25 @@ export class ChargerComponent
       );
       this.AddSubscription(obs);
     }, 1000);
+  }
+
+  ocppMessage(payload: any[]) {
+    let data;
+    if (payload.length > 3) {
+      data = ocppConvertReq(payload);
+    } else {
+      data = ocppConvertRes(payload);
+    }
+
+    switch (data.action) {
+      case 'BootNotification':
+        if (data.payload.status == BootNotificationState.Accepted) {
+          this.connectionState == ConnectionState.connected;
+          console.log('accepted');
+        } else {
+          this.connectionState == ConnectionState.notAuthorized;
+        }
+    }
   }
 
   ngAfterViewInit() {

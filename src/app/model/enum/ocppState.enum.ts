@@ -1,5 +1,5 @@
 export enum BootNotificationState {
-  'Accepted',
-  'Pending',
-  'Rejected',
+  Accepted = 'Accepted',
+  Pending = 'Pending',
+  Rejected = 'Rejected',
 }
