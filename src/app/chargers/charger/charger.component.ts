@@ -3,6 +3,7 @@ import { ocppConvertReq, ocppConvertRes, ocppReq } from 'src/app/helper/ocpp';
 import { ConnectionState } from 'src/app/model/enum/connectionState.enum';
 import { BootNotificationState } from 'src/app/model/enum/ocppState.enum';
 import { ICharger } from 'src/app/model/interface/bootNotification.model';
+import { bootNotificationRes } from 'src/app/service/bootNotification.service';
 import { bootNotification } from 'src/app/service/ocpp.service';
 import { ChargerSocket } from '../../model/chargersocket.model';
 
@@ -56,14 +57,8 @@ export class ChargerComponent
     }
     switch (data.action) {
       case 'BootNotification':
-        if (data.payload.status == BootNotificationState.Accepted) {
-          this.connectionState = ConnectionState.connected;
-          this.charger.state = this.connectionState;
-          console.log(this.charger.state);
-        } else {
-          this.connectionState = ConnectionState.notAuthorized;
-          this.charger.state = this.connectionState;
-        }
+        bootNotificationRes(this.charger, data);
+        break;
     }
   }
 

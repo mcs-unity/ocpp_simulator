@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-12">
           <p class="">{{ charger.chargerName }}</p>
-          <p class=" mb-1 mx-3 circle {{ connectionState }}"></p>
+          <p class=" mb-1 mx-3 circle {{ charger.state }}"></p>
         </div>
       </div>
       <div class="row">
@@ -21,8 +21,8 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <p *ngIf="connectionState == 'Connected'">Available</p>
-          <p *ngIf="connectionState != 'Connected'">Not available</p>
+          <p *ngIf="charger.state == 'Connected'">Available</p>
+          <p *ngIf="charger.state != 'Connected'">Not available</p>
         </div>
       </div>
     </div>
