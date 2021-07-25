@@ -21,10 +21,6 @@ export class ChargerSocket extends SubscriptionDestroyer {
         map((response: MessageEvent): any => {
           let data = JSON.parse(response.data);
           return data;
-        }),
-        catchError((err) => {
-          this.connectionState = ConnectionState.error;
-          return err;
         })
       )
     );

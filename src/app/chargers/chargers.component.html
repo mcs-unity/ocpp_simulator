@@ -14,11 +14,9 @@
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Charger state</mat-label>
         <mat-select (selectionChange)="filterStateEvent($event)">
-          <mat-option value="Available">Available</mat-option>
-          <mat-option value="NotAuthorized">Not Authorized</mat-option>
-          <mat-option value="Preparing">Preparing</mat-option>
-          <mat-option value="Charging">Charging</mat-option>
-          <mat-option value="Error">Error</mat-option>
+          <mat-option *ngFor="let val of states" [value]="val.value">{{
+            val.key
+          }}</mat-option>
         </mat-select>
       </mat-form-field>
     </div>

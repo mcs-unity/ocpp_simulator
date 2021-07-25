@@ -34,9 +34,14 @@ export class ChargerComponent
     this.init(this.charger.ChargerName);
     setTimeout(() => {
       this.charger;
-      const obs = this.message.subscribe((resp) => {
-        console.log(resp);
-      });
+      const obs = this.message.subscribe(
+        (resp) => {
+          console.log(resp);
+        },
+        (err) => {
+          console.log('asd');
+        }
+      );
       this.AddSubscription(obs);
     }, 1000);
   }
