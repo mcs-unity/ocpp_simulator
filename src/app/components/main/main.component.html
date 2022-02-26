@@ -21,6 +21,14 @@
             >Test station</a
           >
         </li>
+        <li class="d-inline-block mx-3">
+          <a
+            class="link py-3"
+            [class.selected]="url.includes('history')"
+            [routerLink]="'/history'"
+            >History</a
+          >
+        </li>
       </ul>
     </span>
     <span class="spacer"></span>

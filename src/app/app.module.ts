@@ -10,6 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { TerminalComponent } from './components/shared/terminal/terminal.component';
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OcppComponent } from './components/shared/ocpp/ocpp.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
     MainComponent,
     DateTime,
     TerminalComponent,
+    OcppComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,8 @@ import { NgxJsonViewerModule } from 'ngx-json-viewer';
     BrowserAnimationsModule,
     MaterialModule,
     NgxJsonViewerModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
