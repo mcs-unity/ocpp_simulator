@@ -6,14 +6,12 @@
 <router-outlet></router-outlet>
 
 <div class="container-fluid w-100 fixed bottom" [class.f-white]="isSplash">
-  <div class="row">
+  <div class="row mx-2" style="font-size: 10px">
     <div class="col-6">
-      <p class="my-2 bold mx-3" style="font-size: 13px">
-        version {{ version }}
-      </p>
+      <p class="my-2 bold">version {{ version }}</p>
     </div>
     <div class="col-6 text-end">
-      <p class="my-2 bold mx-3" style="font-size: 13px">
+      <p class="my-2 bold">
         Copyright all rights reserved MCS Unity Co.,LTD
         {{ date | DateTime: "YYYY" }}
       </p>

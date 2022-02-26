@@ -21,14 +21,6 @@
             >Test station</a
           >
         </li>
-        <li class="d-inline-block mx-3">
-          <a
-            class="link py-3"
-            [class.selected]="url.includes('stes')"
-            [routerLink]="'/main'"
-            >Test station</a
-          >
-        </li>
       </ul>
     </span>
     <span class="spacer"></span>
@@ -37,7 +29,7 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item class="highligh">
           <mat-icon>settings</mat-icon>
           <span>Settings</span>
         </button>
@@ -51,8 +43,10 @@
 </p>
 
 <div class="container-fluid">
-  <div class="row ui mx-3">
+  <div class="row ui mx-2">
     <div id="actions" class="col-8"></div>
-    <div id="terminal" class="col-4"></div>
+    <div id="terminal" class="col-4">
+      <app-terminal></app-terminal>
+    </div>
   </div>
 </div>

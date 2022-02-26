@@ -6,6 +6,8 @@ $darkGray: #8c8c8c;
 $dark: #000000;
 $purple: #231520;
 $green: #19ca8a;
+$yellow: #eed811;
+$red: #c10c0c;
 $fontFamily: "Orbitron", sans-serif;
 $fontSize: 14px;
 
@@ -14,6 +16,10 @@ html {
   font-family: $fontFamily !important;
   font-size: $fontSize;
   background-color: $gray;
+}
+
+h3 {
+  font-size: 18px;
 }
 
 ul {
@@ -28,7 +34,7 @@ a {
 
 .ui {
   padding: 0 5px;
-  height: 88vh;
+  height: 87vh;
 }
 
 .link:hover,
@@ -76,7 +82,40 @@ a {
   background-color: $purple;
 }
 
+.dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.connected {
+  background-color: $green;
+}
+
+.pending {
+  background-color: $yellow;
+}
+
+.error {
+  background-color: $red;
+}
+
 //Override angular colors
 .mat-toolbar {
   background-color: $white !important;
+}
+
+// JSON viewer
+.segment-key {
+  color: $white !important;
+}
+.segment-type-boolean > .segment-main > .segment-value {
+  color: $white !important;
+}
+.segment-type-string > .segment-main > .segment-value {
+  color: $white !important;
+}
+.segment-type-number > .segment-main > .segment-value {
+  color: $white !important;
 }
