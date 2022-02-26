@@ -1,1 +1,58 @@
-<p>main works!</p>
+<p>
+  <mat-toolbar>
+    <span class="ms-4">
+      <figure class="m-0">
+        <img
+          width="75"
+          height="65"
+          src="../../../assets/images/mcs logo-white.png"
+          alt=""
+          title=""
+        />
+      </figure>
+    </span>
+    <span>
+      <ul>
+        <li class="d-inline-block mx-3">
+          <a
+            class="link py-3"
+            [class.selected]="url.includes('main')"
+            [routerLink]="'/main'"
+            >Test station</a
+          >
+        </li>
+        <li class="d-inline-block mx-3">
+          <a
+            class="link py-3"
+            [class.selected]="url.includes('stes')"
+            [routerLink]="'/main'"
+            >Test station</a
+          >
+        </li>
+      </ul>
+    </span>
+    <span class="spacer"></span>
+    <span class="me-4">
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>settings</mat-icon>
+          <span>Settings</span>
+        </button>
+        <button mat-menu-item>
+          <mat-icon>logout</mat-icon>
+          <span>Exit</span>
+        </button>
+      </mat-menu>
+    </span>
+  </mat-toolbar>
+</p>
+
+<div class="container-fluid">
+  <div class="row ui mx-3">
+    <div id="actions" class="col-8"></div>
+    <div id="terminal" class="col-4"></div>
+  </div>
+</div>

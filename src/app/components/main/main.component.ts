@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { SubscriptionDestroyer } from 'src/app/helper/subscriptionhelper.helper';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+export class MainComponent extends SubscriptionDestroyer implements OnInit {
+  url: string = '';
+  constructor(routerEvent: Router) {
+    super();
+    this.url = routerEvent.url;
   }
 
+  ngOnInit(): void {}
 }

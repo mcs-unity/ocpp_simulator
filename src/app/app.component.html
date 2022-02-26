@@ -5,10 +5,15 @@
 ></mat-progress-bar>
 <router-outlet></router-outlet>
 
-<div class="container-fluid w-100 fixed bottom">
+<div class="container-fluid w-100 fixed bottom" [class.f-white]="isSplash">
   <div class="row">
-    <div class="col-12 text-end">
-      <p class="my-2 bold f-white" style="font-size: 13px">
+    <div class="col-6">
+      <p class="my-2 bold mx-3" style="font-size: 13px">
+        version {{ version }}
+      </p>
+    </div>
+    <div class="col-6 text-end">
+      <p class="my-2 bold mx-3" style="font-size: 13px">
         Copyright all rights reserved MCS Unity Co.,LTD
         {{ date | DateTime: "YYYY" }}
       </p>

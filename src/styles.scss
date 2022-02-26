@@ -1,7 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
 
 $white: #fff;
+$gray: #f2f2f2;
+$darkGray: #8c8c8c;
+$dark: #000000;
 $purple: #231520;
+$green: #19ca8a;
 $fontFamily: "Orbitron", sans-serif;
 $fontSize: 14px;
 
@@ -9,6 +13,33 @@ body,
 html {
   font-family: $fontFamily !important;
   font-size: $fontSize;
+  background-color: $gray;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: $darkGray;
+  text-decoration: none;
+  font-size: $fontSize;
+}
+
+.ui {
+  padding: 0 5px;
+  height: 88vh;
+}
+
+.link:hover,
+.link:focus {
+  color: $dark;
+  border-bottom: 2px solid $green;
+}
+
+.selected {
+  color: $dark;
+  border-bottom: 2px solid $green;
 }
 
 .bold {
@@ -17,6 +48,10 @@ html {
 
 .full-height {
   height: 100vh;
+}
+
+.spacer {
+  flex: 1 1 auto;
 }
 
 .fixed {
@@ -41,11 +76,7 @@ html {
   background-color: $purple;
 }
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+//Override angular colors
+.mat-toolbar {
+  background-color: $white !important;
 }
