@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+
+$white: #fff;
+$purple: #231520;
+$fontFamily: "Orbitron", sans-serif;
+$fontSize: 14px;
+
+body,
+html {
+  font-family: $fontFamily !important;
+  font-size: $fontSize;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.fixed {
+  position: fixed;
+  left: 0;
+  z-index: 99;
+}
+
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.f-white {
+  color: $white;
+}
+
+.background-purple {
+  background-color: $purple;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
