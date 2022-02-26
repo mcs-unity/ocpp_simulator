@@ -1,1 +1,22 @@
-<p>ocpp works!</p>
+<div class="container-fluid">
+  <div class="row d-flex align-items-top">
+    <div class="col-5">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Enter domain to central station</mat-label>
+        <input matInput placeholder="wss://domain.com/ocpp/charger1" required />
+        <mat-hint
+          >Enter the domain using wss:// to connect to the websocket</mat-hint
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-5 mt-3">
+      <mat-slide-toggle class="mx-2">Remember domain</mat-slide-toggle>
+      <mat-slide-toggle class="mx-2" [disabled]="true">
+        Simulator mode
+      </mat-slide-toggle>
+    </div>
+    <div class="col-2">
+      <button class="w-100 py-2" mat-raised-button>Connect to central</button>
+    </div>
+  </div>
+</div>

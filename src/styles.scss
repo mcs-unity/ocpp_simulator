@@ -105,6 +105,19 @@ a {
   background-color: $white !important;
 }
 
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: rgba($color: $purple, $alpha: 0.8);
+}
+
+.mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: $purple;
+}
+
 // JSON viewer
 .segment-key {
   color: $white !important;

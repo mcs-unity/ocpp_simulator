@@ -14,24 +14,24 @@ export class AppComponent extends SubscriptionDestroyer {
   isSplash = true;
   date = new Date();
 
-  constructor(loading: LoadingService, router: Router) {
+  constructor(loading: LoadingService, private router: Router) {
     super();
     const obs = loading.loading.subscribe(
       (loadingState) => (this.isLoading = loadingState)
     );
     this.AddSubscription(obs);
 
-    const routeObs = router.events.subscribe((val) => {
-      console.log(router.url);
-
-      if (val instanceof NavigationEnd) {
-        if (router.url.includes('splash')) {
-          this.isSplash = true;
-        } else {
-          this.isSplash = false;
-        }
-      }
-    });
+    const routeObs = router.events.subscribe(this.routerEvent);
     this.AddSubscription(routeObs);
+  }
+
+  routerEvent(val: any): void {
+    if (val instanceof NavigationEnd) {
+      if (this.router.url.includes('splash')) {
+        this.isSplash = true;
+      } else {
+        this.isSplash = false;
+      }
+    }
   }
 }
