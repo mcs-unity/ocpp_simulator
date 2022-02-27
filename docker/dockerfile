@@ -1,0 +1,13 @@
+FROM node:alpine AS BUILD
+WORKDIR  /app
+COPY ./ ./app
+RUN npm install
+RUN ng b
+
+FROM nginx:alpine AS PROD
+COPY --from=BUILD ./app/dist/ocpp ./usr/share/nginx/
+COPY nginx/* /etc/nginx/
+RUN rm /etc/nginx/sites-enabled/general.conf
+RUN adduser -D nonroot
+USER nonroot
+EXPOSE 80

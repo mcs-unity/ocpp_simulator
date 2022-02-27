@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   templateUrl: './sockets.component.html',
   styleUrls: ['./sockets.component.scss'],
 })
-export class SocketsComponent implements OnInit {
+export class SocketsComponent {
   toolTipDelay = environment.toolTipDelay;
   sockets: ISocket[] = [
     { name: 'Socket 1', state: 'Pending' },
@@ -36,6 +36,4 @@ export class SocketsComponent implements OnInit {
     },
   };
   constructor() {}
-
-  ngOnInit(): void {}
 }
