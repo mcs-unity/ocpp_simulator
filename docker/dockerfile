@@ -5,7 +5,7 @@ RUN npm install
 RUN ng b
 
 FROM nginx:alpine AS PROD
-COPY --from=BUILD ./app/dist/ocpp ./usr/share/nginx/
+COPY --from=BUILD /app/dist/ocpp ./usr/share/nginx/
 COPY nginx/* /etc/nginx/
 RUN rm /etc/nginx/sites-enabled/general.conf
 RUN adduser -D nonroot
