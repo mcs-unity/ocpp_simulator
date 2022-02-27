@@ -41,3 +41,10 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+
+# Docker
+Dockerfile*
+dockerfile*
+docker-compose*
+.dockerignore
