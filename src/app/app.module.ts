@@ -16,6 +16,7 @@ import { OCPPRoutingModule } from './components/ocpp-routing.module';
 import { TestStationComponent } from './components/test-station/test-station.component';
 import { SocketsComponent } from './components/shared/sockets/sockets.component';
 import { CommandsComponent } from './components/shared/commands/commands.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CommandsComponent } from './components/shared/commands/commands.compone
     NgxJsonViewerModule,
     FormsModule,
     ReactiveFormsModule,
+    CarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

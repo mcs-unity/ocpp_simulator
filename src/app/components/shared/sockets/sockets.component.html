@@ -13,7 +13,27 @@
   </div>
   <div class="row my-2">
     <div class="col-12">
-      <mat-card class="col-12"></mat-card>
+      <mat-card class="col-12">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let socket of sockets">
+            <mat-card class="socket row d-inline-flex align-items-center">
+              <div class="col-6">
+                <p class="m-0 bold">{{ socket.name }}</p>
+              </div>
+              <div class="col-6 text-end p-0">
+                <p class="m-0 bold">
+                  <span class="d-inline-flex align-items-center">
+                    {{ socket.state
+                    }}<span
+                      class="mx-2 dot {{ socket.state.toLowerCase() }}"
+                    ></span>
+                  </span>
+                </p>
+              </div>
+            </mat-card>
+          </ng-template>
+        </owl-carousel-o>
+      </mat-card>
     </div>
   </div>
 </div>
