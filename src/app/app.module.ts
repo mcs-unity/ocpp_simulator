@@ -12,6 +12,10 @@ import { TerminalComponent } from './components/shared/terminal/terminal.compone
 import { NgxJsonViewerModule } from 'ngx-json-viewer';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OcppComponent } from './components/shared/ocpp/ocpp.component';
+import { OCPPRoutingModule } from './components/ocpp-routing.module';
+import { TestStationComponent } from './components/test-station/test-station.component';
+import { SocketsComponent } from './components/shared/sockets/sockets.component';
+import { CommandsComponent } from './components/shared/commands/commands.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +25,14 @@ import { OcppComponent } from './components/shared/ocpp/ocpp.component';
     DateTime,
     TerminalComponent,
     OcppComponent,
+    TestStationComponent,
+    SocketsComponent,
+    CommandsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    OCPPRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     NgxJsonViewerModule,

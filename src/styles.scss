@@ -118,6 +118,14 @@ a {
   background-color: $purple;
 }
 
+.mat-progress-bar {
+  height: 7px !important;
+}
+
+.mat-ink-bar {
+  background-color: $green !important;
+}
+
 // JSON viewer
 .segment-key {
   color: $white !important;

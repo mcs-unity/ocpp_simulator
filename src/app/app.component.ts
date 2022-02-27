@@ -21,7 +21,9 @@ export class AppComponent extends SubscriptionDestroyer {
     );
     this.AddSubscription(obs);
 
-    const routeObs = router.events.subscribe(this.routerEvent);
+    const routeObs = router.events.subscribe((event) =>
+      this.routerEvent(event)
+    );
     this.AddSubscription(routeObs);
   }
 

@@ -12,7 +12,7 @@ export class SplashScreenComponent {
     this.loading.isLoading();
 
     setTimeout(() => {
-      router.navigateByUrl('/main');
+      router.navigateByUrl('/ocpp');
     }, 3000);
   }
 }

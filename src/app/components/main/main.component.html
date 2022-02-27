@@ -16,8 +16,8 @@
         <li class="d-inline-block mx-3">
           <a
             class="link py-3"
-            [class.selected]="url.includes('main')"
-            [routerLink]="'/main'"
+            [class.selected]="url.includes('station')"
+            [routerLink]="'/ocpp/station'"
             >Test station</a
           >
         </li>
@@ -25,7 +25,7 @@
           <a
             class="link py-3"
             [class.selected]="url.includes('history')"
-            [routerLink]="'/history'"
+            [routerLink]="'/ocpp/history'"
             >History</a
           >
         </li>
@@ -50,13 +50,4 @@
   </mat-toolbar>
 </p>
 
-<div class="container-fluid">
-  <div class="row ui mx-2">
-    <div id="actions" class="col-8">
-      <app-ocpp></app-ocpp>
-    </div>
-    <div id="terminal" class="col-4">
-      <app-terminal></app-terminal>
-    </div>
-  </div>
-</div>
+<router-outlet></router-outlet>
