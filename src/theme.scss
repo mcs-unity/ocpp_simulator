@@ -1,0 +1,24 @@
+@import "~@angular/material/theming";
+
+// set font family
+$custom-typography: mat-typography-config(
+  $font-family: "Orbitron",
+);
+@include angular-material-typography($custom-typography);
+
+$primary: (
+  Main: #231520,
+  Light: #833c73,
+  Dark: #1a1017,
+  contrast: (
+    Main: #f5f5f5,
+    Light: #000,
+    Dark: #fff,
+  ),
+);
+// set custom color color
+$my-app-primary: mat-palette($primary, Main, Light, Dark);
+$my-app-accent: mat-palette($mat-pink, 500, 900, A100);
+$my-app-warn: mat-palette($mat-deep-orange);
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+@include angular-material-theme($my-app-theme);
