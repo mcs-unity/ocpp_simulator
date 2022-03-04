@@ -1,6 +1,7 @@
 @import "~@angular/material/theming";
 
 $purple: #231520;
+$green: #19ca8a;
 $white: #fff;
 $dark: #000000;
 $transparent: transparent;
@@ -38,4 +39,44 @@ $my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
 .mat-raised-button.mat-primary:focus {
   background: $purple;
   color: $white;
+}
+
+.mat-tab-group.mat-primary
+  .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled),
+.mat-tab-group.mat-primary
+  .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.mat-tab-group.mat-primary
+  .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.mat-tab-group.mat-primary
+  .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled),
+.mat-tab-nav-bar.mat-primary
+  .mat-tab-label.cdk-keyboard-focused:not(.mat-tab-disabled),
+.mat-tab-nav-bar.mat-primary
+  .mat-tab-label.cdk-program-focused:not(.mat-tab-disabled),
+.mat-tab-nav-bar.mat-primary
+  .mat-tab-link.cdk-keyboard-focused:not(.mat-tab-disabled),
+.mat-tab-nav-bar.mat-primary
+  .mat-tab-link.cdk-program-focused:not(.mat-tab-disabled) {
+  background-color: transparent;
+}
+
+.mat-toolbar {
+  background-color: $white !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.mat-progress-bar {
+  height: 7px !important;
+}
+
+.mat-ink-bar {
+  background-color: $green !important;
+}
+
+.mat-tab-header {
+  border-bottom: none;
 }

@@ -103,28 +103,6 @@ a {
   background-color: $red;
 }
 
-//Override angular colors
-.mat-toolbar {
-  background-color: $white !important;
-}
-
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  background-color: white;
-  border-radius: 5px;
-}
-
-.mat-progress-bar {
-  height: 7px !important;
-}
-
-.mat-ink-bar {
-  background-color: $green !important;
-}
-
-.mat-tab-header {
-  border-bottom: none;
-}
-
 // JSON viewer
 .segment-key {
   color: $white !important;
