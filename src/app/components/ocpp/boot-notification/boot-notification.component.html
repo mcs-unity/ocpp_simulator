@@ -123,6 +123,7 @@
     <div class="col-12 my-3 text-end">
       <button
         class="py-2 mx-2"
+        type="button"
         [color]="'primary'"
         [matTooltip]="'Info about the action'"
         [matTooltipShowDelay]="toolTipDelay"
@@ -132,6 +133,8 @@
       </button>
       <button
         class="py-2 ms-2"
+        type="button"
+        (click)="submit()"
         [color]="'primary'"
         [matTooltip]="'Info about the action'"
         [matTooltipShowDelay]="toolTipDelay"

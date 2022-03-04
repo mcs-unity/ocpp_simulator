@@ -25,4 +25,12 @@ export class BootNotificationComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  submit(): void {
+    try {
+      if (!this.form.valid) throw Error('Invalid Boot notification form');
+    } catch (error: any) {
+      alert(error.message);
+    }
+  }
 }
