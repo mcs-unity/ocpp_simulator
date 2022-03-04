@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { SubscriptionDestroyer } from 'src/app/helper/subscriptionhelper.helper';
 
 @Component({
@@ -8,10 +8,17 @@ import { SubscriptionDestroyer } from 'src/app/helper/subscriptionhelper.helper'
 })
 export class MainComponent extends SubscriptionDestroyer implements OnInit {
   url: string = '';
-  constructor(routerEvent: Router) {
+  constructor(private router: Router) {
     super();
-    this.url = routerEvent.url;
+    const obs = router.events.subscribe((event) => this.routerEvent(event));
+    this.AddSubscription(obs);
   }
 
   ngOnInit(): void {}
+
+  routerEvent(val: any): void {
+    if (val instanceof NavigationEnd) {
+      this.url = this.router.url;
+    }
+  }
 }

@@ -18,6 +18,8 @@ import { SocketsComponent } from './components/shared/sockets/sockets.component'
 import { CommandsComponent } from './components/shared/commands/commands.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { BootNotificationComponent } from './components/ocpp/boot-notification/boot-notification.component';
+import { HistoryComponent } from './components/history/history.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { BootNotificationComponent } from './components/ocpp/boot-notification/b
     SocketsComponent,
     CommandsComponent,
     BootNotificationComponent,
+    HistoryComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,

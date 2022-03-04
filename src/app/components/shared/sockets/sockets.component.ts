@@ -14,6 +14,7 @@ export class SocketsComponent {
   customOptions: OwlOptions = {
     dots: false,
     nav: true,
+    navText: ['<', '>'],
     navSpeed: 700,
     responsive: {
       0: {
