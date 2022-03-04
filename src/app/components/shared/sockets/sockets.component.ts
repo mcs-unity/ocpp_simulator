@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ISocket } from 'src/app/model/ISocket.model';
 import { environment } from 'src/environments/environment';
@@ -10,15 +10,10 @@ import { environment } from 'src/environments/environment';
 })
 export class SocketsComponent {
   toolTipDelay = environment.toolTipDelay;
-  sockets: ISocket[] = [
-    { name: 'Socket 1', state: 'Pending' },
-    { name: 'Socket 2', state: 'Error' },
-    { name: 'Socket 3', state: 'Connected' },
-    { name: 'Socket 4', state: 'Connected' },
-    { name: 'Socket 5', state: 'Connected' },
-  ];
+  sockets: ISocket[] = [];
   customOptions: OwlOptions = {
     dots: false,
+    nav: true,
     navSpeed: 700,
     responsive: {
       0: {
@@ -35,5 +30,19 @@ export class SocketsComponent {
       },
     },
   };
-  constructor() {}
+  constructor() {
+    this.addSocket();
+  }
+
+  addSocket() {
+    const socket: ISocket = {
+      name: `Socket ${this.sockets.length}`,
+      state: 'Available',
+    };
+    this.sockets.push(socket);
+  }
+
+  removeSocket(index: number) {
+    if (index <= this.sockets.length) this.sockets.splice(index, 1);
+  }
 }

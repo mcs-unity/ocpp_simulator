@@ -89,7 +89,8 @@ a {
   display: inline-block;
 }
 
-.connected {
+.connected,
+.available {
   background-color: $green;
 }
 
@@ -97,7 +98,8 @@ a {
   background-color: $yellow;
 }
 
-.error {
+.error,
+.rejected {
   background-color: $red;
 }
 
@@ -135,4 +137,25 @@ a {
 }
 .segment-type-number > .segment-main > .segment-value {
   color: $white !important;
+}
+
+// Owl carousel
+.owl-theme .owl-nav [class*="owl-"] {
+  background: $purple !important;
+}
+
+.owl-nav {
+  margin: 0 !important;
+}
+
+.owl-prev {
+  position: absolute !important;
+  top: 12px;
+  left: -35px;
+}
+
+.owl-next {
+  position: absolute !important;
+  top: 12px;
+  right: -35px;
 }

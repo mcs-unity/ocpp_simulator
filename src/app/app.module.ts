@@ -17,6 +17,7 @@ import { TestStationComponent } from './components/test-station/test-station.com
 import { SocketsComponent } from './components/shared/sockets/sockets.component';
 import { CommandsComponent } from './components/shared/commands/commands.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { BootNotificationComponent } from './components/ocpp/boot-notification/boot-notification.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     TestStationComponent,
     SocketsComponent,
     CommandsComponent,
+    BootNotificationComponent,
   ],
   imports: [
     BrowserModule,
