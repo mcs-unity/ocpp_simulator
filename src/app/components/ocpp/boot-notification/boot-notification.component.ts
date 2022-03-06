@@ -33,4 +33,8 @@ export class BootNotificationComponent implements OnInit {
       alert(error.message);
     }
   }
+
+  clearForm() {
+    this.form.reset();
+  }
 }

@@ -1,11 +1,19 @@
 <div class="container-fluid p-0">
-  <div class="row d-flex align-items-top">
+  <form [formGroup]="form" class="row d-flex align-items-top">
     <div class="col-xxl-5 col-lg-auto">
       <mat-form-field class="w-100" appearance="outline">
         <mat-label>Enter domain to central station</mat-label>
-        <input matInput placeholder="wss://domain.com/ocpp/charger1" required />
+        <input
+          formControlName="url"
+          matInput
+          placeholder="wss://domain.com/ocpp/charger1"
+          required
+        />
         <mat-hint
           >Enter the domain using wss:// to connect to the websocket</mat-hint
+        >
+        <mat-error *ngIf="!form.controls['url'].valid"
+          >Input a valid url with the following wss://</mat-error
         >
       </mat-form-field>
     </div>
@@ -30,15 +38,16 @@
     <div class="col-xl-auto ms-3 col-lg-auto text-end">
       <button
         class="py-2"
+        (click)="connect()"
         [color]="'primary'"
         [matTooltip]="'Info about the action'"
         [matTooltipShowDelay]="toolTipDelay"
         mat-raised-button
       >
-        Connect to central
+        {{ connected ? "Disconnect" : "Connect to central" }}
       </button>
     </div>
-  </div>
+  </form>
 </div>
 
 <app-sockets></app-sockets>

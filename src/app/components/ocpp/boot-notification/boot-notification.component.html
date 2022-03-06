@@ -120,28 +120,40 @@
         >
       </mat-form-field>
     </div>
-    <div class="col-12 my-3 text-end">
+    <div class="col-12 mt-3">
       <button
-        class="py-2 mx-2"
+        class="py-2 mx-2 text-start"
         type="button"
+        (click)="clearForm()"
         [color]="'primary'"
         [matTooltip]="'Info about the action'"
         [matTooltipShowDelay]="toolTipDelay"
         mat-raised-button
       >
-        Set default settings
+        Clear form
       </button>
-      <button
-        class="py-2 ms-2"
-        type="button"
-        (click)="submit()"
-        [color]="'primary'"
-        [matTooltip]="'Info about the action'"
-        [matTooltipShowDelay]="toolTipDelay"
-        mat-raised-button
-      >
-        Send boot notification
-      </button>
+      <div class="d-inline-block float-end">
+        <button
+          class="py-2 mx-2"
+          type="button"
+          [color]="'primary'"
+          [matTooltip]="'Info about the action'"
+          [matTooltipShowDelay]="toolTipDelay"
+          mat-raised-button
+        >
+          Set default settings
+        </button>
+        <button
+          class="py-2 ms-2"
+          (click)="submit()"
+          [color]="'primary'"
+          [matTooltip]="'Info about the action'"
+          [matTooltipShowDelay]="toolTipDelay"
+          mat-raised-button
+        >
+          Send boot notification
+        </button>
+      </div>
     </div>
   </form>
 </div>

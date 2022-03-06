@@ -11,6 +11,7 @@ import { environment } from 'src/environments/environment';
 export class SocketsComponent {
   toolTipDelay = environment.toolTipDelay;
   sockets: ISocket[] = [];
+  selected!: ISocket | null;
   customOptions: OwlOptions = {
     dots: false,
     nav: true,
@@ -45,5 +46,13 @@ export class SocketsComponent {
 
   removeSocket(index: number) {
     if (index <= this.sockets.length) this.sockets.splice(index, 1);
+  }
+
+  selectSocket(socket: ISocket) {
+    if (socket == this.selected) {
+      this.selected = null;
+    } else {
+      this.selected = socket;
+    }
   }
 }
