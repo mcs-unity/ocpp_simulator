@@ -9,6 +9,14 @@
           placeholder="wss://domain.com/ocpp/charger1"
           required
         />
+        <button
+          *ngIf="url.length > 0"
+          mat-icon-button
+          matSuffix
+          (click)="removeUrlFromLocalStorage()"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
         <mat-hint
           >Enter the domain using wss:// to connect to the websocket</mat-hint
         >
@@ -19,6 +27,8 @@
     </div>
     <div class="col-xxl-auto me-4 col-lg-auto mt-3">
       <mat-slide-toggle
+        formControlName="remember"
+        [disabled]="url.length > 0"
         [color]="'primary'"
         class="mx-2"
         [matTooltipShowDelay]="toolTipDelay"
@@ -38,7 +48,7 @@
     <div class="col-xl-auto ms-3 col-lg-auto text-end">
       <button
         class="py-2"
-        (click)="connect()"
+        (click)="submit()"
         [color]="'primary'"
         [matTooltip]="'Info about the action'"
         [matTooltipShowDelay]="toolTipDelay"

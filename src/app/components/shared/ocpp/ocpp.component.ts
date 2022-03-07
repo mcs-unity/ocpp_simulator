@@ -13,40 +13,47 @@ export class OcppComponent extends SubscriptionDestroyer {
   toolTipDelay = environment.toolTipDelay;
   form!: FormGroup;
   connected = false;
+  url = '';
+  private readonly key = 'url';
   constructor(formBuilder: FormBuilder, private websocket: WebsocketService) {
     super();
+    this.url = localStorage.getItem(this.key) || '';
     this.form = formBuilder.group({
-      url: ['', [Validators.required]],
+      url: [this.url, [Validators.required]],
+      remember: [],
     });
   }
 
-  disconnect(): void {
+  private disconnect(): void {
     this.websocket.disconnect();
     this.connected = false;
-    console.log('asd' + this.connected);
   }
 
-  connect(): void {
-    if (this.connected) this.disconnect();
-    else {
-      try {
-        if (!this.form.valid) throw new Error('Invalid form');
-        const obs = this.websocket
-          .connect(this.form.controls['url'].value)
-          .subscribe(
-            (value) => {
-              console.log(value);
-            },
-            (error) => {
-              console.log(error);
-              alert(error);
-            }
-          );
-        this.AddSubscription(obs);
-        this.connected = true;
-      } catch (error) {
-        alert('Error failed to connect to web socket');
-      }
+  private rememberDomain(): void {
+    const remember = this.form.controls['remember'].value;
+    if (remember) {
+      this.url = this.form.controls['url'].value;
+      localStorage.setItem(this.key, this.url);
     }
+  }
+
+  private connect(): void {
+    try {
+      if (!this.form.valid) throw Error('Invalid websocket URL');
+      this.rememberDomain();
+      this.connected = true;
+    } catch (error: any) {
+      alert(error.message);
+    }
+  }
+
+  removeUrlFromLocalStorage(): void {
+    localStorage.removeItem(this.key);
+    this.url = '';
+  }
+
+  submit(): void {
+    if (this.connected) this.disconnect();
+    else this.connect();
   }
 }
