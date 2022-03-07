@@ -14,6 +14,8 @@
           mat-icon-button
           matSuffix
           (click)="removeUrlFromLocalStorage()"
+          [matTooltipShowDelay]="toolTipDelay"
+          [matTooltip]="'Info about the action'"
         >
           <mat-icon>delete</mat-icon>
         </button>

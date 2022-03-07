@@ -20,7 +20,7 @@ export class OcppComponent extends SubscriptionDestroyer {
     this.url = localStorage.getItem(this.key) || '';
     this.form = formBuilder.group({
       url: [this.url, [Validators.required]],
-      remember: [],
+      remember: [this.url.length > 0],
     });
   }
 
@@ -50,6 +50,7 @@ export class OcppComponent extends SubscriptionDestroyer {
   removeUrlFromLocalStorage(): void {
     localStorage.removeItem(this.key);
     this.url = '';
+    this.form.reset();
   }
 
   submit(): void {
