@@ -32,8 +32,8 @@ export class TerminalComponent extends SubscriptionDestroyer {
         .connect('', '', false)
         .subscribe((message: MessageEvent) => {
           const temp = [...this.response];
-          temp.push(message.data);
-          this.response = temp;
+          temp.push(JSON.parse(message.data));
+          this.response = temp.reverse();
         });
       this.AddSubscription(obs);
     }, 100);

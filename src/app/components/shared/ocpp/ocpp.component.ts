@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { Subject } from 'rxjs';
 import { SubscriptionDestroyer } from 'src/app/helper/subscriptionhelper.helper';
 import { Connection } from 'src/app/model/enum/connection.enum';
 import { WebsocketService } from 'src/app/service/websocket.service';
 import { environment } from 'src/environments/environment';
+import { map, catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-ocpp',
@@ -17,6 +19,7 @@ export class OcppComponent extends SubscriptionDestroyer {
   connected = false;
   url = '';
   private readonly key = 'url';
+  messages!: Subject<string>;
 
   constructor(formBuilder: FormBuilder, private websocket: WebsocketService) {
     super();
@@ -44,7 +47,7 @@ export class OcppComponent extends SubscriptionDestroyer {
   }
 
   private urlIsValid(): void {
-    if (this.form.controls[this.key].value.length == 0) {
+    if (this.form.controls[this.key].value?.length == 0) {
       setTimeout(() => {
         this.form.controls['remember'].setValue(false);
       }, 100);
@@ -70,7 +73,19 @@ export class OcppComponent extends SubscriptionDestroyer {
   private async connect(): Promise<void> {
     try {
       if (!this.form.valid) throw Error('Invalid websocket URL');
-      await this.websocket.connect(this.url, 'ocpp-1.6').toPromise();
+      this.messages = <Subject<string>>(
+        this.websocket.connect(this.url, 'ocpp-1.6').pipe(
+          map(
+            (response: MessageEvent): any => {
+              return response;
+            },
+            catchError((error) => {
+              console.error(error);
+              return this.connect();
+            })
+          )
+        )
+      );
     } catch (error: any) {
       setTimeout(() => {
         alert('Failed to connect to central');

@@ -36,15 +36,13 @@ export class WebsocketService {
       next: (data: Object) => {
         if (ws.readyState == WebSocket.OPEN) ws.send(JSON.stringify(data));
       },
-      error: (err: any) => {
-        return err;
-      },
+      error: () => {},
       complete: () => {
         if (ws.readyState == WebSocket.OPEN) ws.close();
         this.connected.next(Connection.pending);
       },
     };
-    const subject = AnonymousSubject.create(observer, observable);
+    const subject = new AnonymousSubject(observer, observable);
     return subject;
   }
 

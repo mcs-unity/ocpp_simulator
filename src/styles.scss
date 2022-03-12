@@ -104,6 +104,12 @@ a {
 }
 
 // JSON viewer
+
+.ngx-json-viewer {
+  max-height: 68vh;
+  overflow-y: auto !important;
+}
+
 .segment-key {
   color: $white !important;
 }

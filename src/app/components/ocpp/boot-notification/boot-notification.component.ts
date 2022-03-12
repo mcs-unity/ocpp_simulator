@@ -1,15 +1,16 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-boot-notification',
   templateUrl: './boot-notification.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BootNotificationComponent implements OnInit {
+export class BootNotificationComponent {
   toolTipDelay = environment.toolTipDelay;
   form: FormGroup;
+  @Input() messages!: Subject<any>;
 
   constructor(formBuilder: FormBuilder) {
     this.form = formBuilder.group({
@@ -25,11 +26,10 @@ export class BootNotificationComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
   submit(): void {
     try {
       if (!this.form.valid) throw Error('Invalid Boot notification form');
+      if (this.messages) this.messages.next(this.form.value);
     } catch (error: any) {
       alert(error.message);
     }

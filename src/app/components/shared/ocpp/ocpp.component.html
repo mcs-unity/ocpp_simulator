@@ -61,7 +61,9 @@
       <mat-tab-group>
         <mat-tab label="Boot Notification">
           <mat-card class="command-card mt-2">
-            <app-boot-notification></app-boot-notification>
+            <app-boot-notification
+              [messages]="messages"
+            ></app-boot-notification>
           </mat-card>
         </mat-tab>
         <mat-tab label="Transactions">
