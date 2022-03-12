@@ -8,6 +8,7 @@ import { SubscriptionDestroyer } from 'src/app/helper/subscriptionhelper.helper'
 })
 export class MainComponent extends SubscriptionDestroyer implements OnInit {
   url: string = '';
+  fullscreen = false;
   constructor(private router: Router) {
     super();
     const obs = router.events.subscribe((event) => this.routerEvent(event));
@@ -20,5 +21,12 @@ export class MainComponent extends SubscriptionDestroyer implements OnInit {
     if (val instanceof NavigationEnd) {
       this.url = this.router.url;
     }
+  }
+
+  fullScreen(): void {
+    const body = document.getElementsByTagName('body')[0];
+    if (this.fullscreen) document.exitFullscreen();
+    else body.requestFullscreen();
+    this.fullscreen = !this.fullscreen;
   }
 }

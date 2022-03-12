@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-boot-notification',
   templateUrl: './boot-notification.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BootNotificationComponent implements OnInit {
   toolTipDelay = environment.toolTipDelay;

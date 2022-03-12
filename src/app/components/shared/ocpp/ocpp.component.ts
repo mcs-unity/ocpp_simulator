@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { SubscriptionDestroyer } from 'src/app/helper/subscriptionhelper.helper';
+import { Connection } from 'src/app/model/enum/connection.enum';
 import { WebsocketService } from 'src/app/service/websocket.service';
 import { environment } from 'src/environments/environment';
 
@@ -15,6 +17,7 @@ export class OcppComponent extends SubscriptionDestroyer {
   connected = false;
   url = '';
   private readonly key = 'url';
+
   constructor(formBuilder: FormBuilder, private websocket: WebsocketService) {
     super();
     this.url = localStorage.getItem(this.key) || '';
@@ -22,6 +25,41 @@ export class OcppComponent extends SubscriptionDestroyer {
       url: [this.url, [Validators.required]],
       remember: [this.url.length > 0],
     });
+
+    const obs = websocket.$connected.subscribe(
+      (state: Connection) => (this.connected = state === Connection.connected)
+    );
+    this.AddSubscription(obs);
+  }
+
+  private removeUrlFromLocalStorage(): void {
+    localStorage.removeItem(this.key);
+    this.url = '';
+    this.form.reset();
+  }
+
+  private rememberDomain(): void {
+    this.url = this.form.controls[this.key].value;
+    localStorage.setItem(this.key, this.url);
+  }
+
+  private urlIsValid(): void {
+    if (this.form.controls[this.key].value.length == 0) {
+      setTimeout(() => {
+        this.form.controls['remember'].setValue(false);
+      }, 100);
+      throw Error('Url is required');
+    }
+  }
+
+  remember(event: MatSlideToggle): void {
+    try {
+      this.urlIsValid();
+      if (!event.checked) this.rememberDomain();
+      else this.removeUrlFromLocalStorage();
+    } catch (error: unknown) {
+      if (error instanceof Error) alert(error.message);
+    }
   }
 
   private disconnect(): void {
@@ -29,28 +67,16 @@ export class OcppComponent extends SubscriptionDestroyer {
     this.connected = false;
   }
 
-  private rememberDomain(): void {
-    const remember = this.form.controls['remember'].value;
-    if (remember) {
-      this.url = this.form.controls['url'].value;
-      localStorage.setItem(this.key, this.url);
-    }
-  }
-
-  private connect(): void {
+  private async connect(): Promise<void> {
     try {
       if (!this.form.valid) throw Error('Invalid websocket URL');
-      this.rememberDomain();
-      this.connected = true;
+      await this.websocket.connect(this.url, 'ocpp-1.6').toPromise();
     } catch (error: any) {
-      alert(error.message);
+      setTimeout(() => {
+        alert('Failed to connect to central');
+      }, 100);
+      this.websocket.error();
     }
-  }
-
-  removeUrlFromLocalStorage(): void {
-    localStorage.removeItem(this.key);
-    this.url = '';
-    this.form.reset();
   }
 
   submit(): void {

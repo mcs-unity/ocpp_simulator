@@ -9,16 +9,6 @@
           placeholder="wss://domain.com/ocpp/charger1"
           required
         />
-        <button
-          *ngIf="url.length > 0"
-          mat-icon-button
-          matSuffix
-          (click)="removeUrlFromLocalStorage()"
-          [matTooltipShowDelay]="toolTipDelay"
-          [matTooltip]="'Info about the action'"
-        >
-          <mat-icon>delete</mat-icon>
-        </button>
         <mat-hint
           >Enter the domain using wss:// to connect to the websocket</mat-hint
         >
@@ -27,12 +17,13 @@
         >
       </mat-form-field>
     </div>
-    <div class="col-xxl-auto me-4 col-lg-auto mt-3">
+    <div class="col-xxl-4 col-lg-auto mt-3">
       <mat-slide-toggle
+        #rememberToggle
         formControlName="remember"
-        [disabled]="url.length > 0"
         [color]="'primary'"
         class="mx-2"
+        (toggleChange)="remember(rememberToggle)"
         [matTooltipShowDelay]="toolTipDelay"
         [matTooltip]="'Info about the action'"
         >Remember domain</mat-slide-toggle
@@ -44,10 +35,10 @@
         [matTooltip]="'Info about the action'"
         [disabled]="true"
       >
-        Simulator mode
+        Simulator
       </mat-slide-toggle>
     </div>
-    <div class="col-xl-auto ms-3 col-lg-auto text-end">
+    <div class="col-xxl-3 col-lg-auto text-end">
       <button
         class="py-2"
         (click)="submit()"
@@ -56,11 +47,36 @@
         [matTooltipShowDelay]="toolTipDelay"
         mat-raised-button
       >
-        {{ connected ? "Disconnect" : "Connect to central" }}
+        {{ connected ? "Disconnect client" : "Connect to central" }}
       </button>
     </div>
   </form>
 </div>
 
 <app-sockets></app-sockets>
-<app-commands></app-commands>
+
+<div class="contianer-fluid p-0">
+  <div class="row">
+    <div class="col-12">
+      <mat-tab-group>
+        <mat-tab label="Boot Notification">
+          <mat-card class="command-card mt-2">
+            <app-boot-notification></app-boot-notification>
+          </mat-card>
+        </mat-tab>
+        <mat-tab label="Transactions">
+          <mat-card class="command-card mt-2"></mat-card>
+        </mat-tab>
+        <mat-tab label="Status Notification">
+          <mat-card class="command-card mt-2"></mat-card>
+        </mat-tab>
+        <mat-tab label="Heartbeat">
+          <mat-card class="command-card mt-2"></mat-card
+        ></mat-tab>
+        <mat-tab label="Error">
+          <mat-card class="command-card mt-2"></mat-card>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

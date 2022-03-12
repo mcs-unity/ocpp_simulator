@@ -14,7 +14,7 @@
   <div class="row mx-1">
     <mat-card id="terminal" class="col-12 mx-auto my-2">
       <div class="overflow">
-        <ngx-json-viewer [json]="response"></ngx-json-viewer>
+        <ngx-json-viewer *ngIf="show" [json]="response"></ngx-json-viewer>
       </div>
     </mat-card>
   </div>
@@ -26,6 +26,7 @@
         [matTooltip]="'info about this action'"
         [matTooltipShowDelay]="toolTipDelay"
         mat-raised-button
+        (click)="export()"
       >
         Export log
       </button>
@@ -37,6 +38,7 @@
         [matTooltip]="'info about this action'"
         [matTooltipShowDelay]="toolTipDelay"
         mat-raised-button
+        (click)="clear()"
       >
         Clear log
       </button>
