@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { convertOCPPResponseToObject } from 'src/app/helper/ocpp.helper';
 import { SubscriptionDestroyer } from 'src/app/helper/subscriptionhelper.helper';
 import { Connection } from 'src/app/model/enum/connection.enum';
 import { WebsocketService } from 'src/app/service/websocket.service';
@@ -14,7 +15,7 @@ export class TerminalComponent extends SubscriptionDestroyer {
   state = Connection.pending;
   response: any[] = [];
   show = true;
-
+  key = 'log';
   constructor(private websocket: WebsocketService) {
     super();
     const obs = websocket.$connected.subscribe((state: Connection) => {
@@ -24,6 +25,16 @@ export class TerminalComponent extends SubscriptionDestroyer {
       }
     });
     this.AddSubscription(obs);
+    this.getLog();
+  }
+
+  getLog(): void {
+    const log = localStorage.getItem(this.key);
+    if (log) this.response = JSON.parse(log);
+  }
+
+  saveLog(): void {
+    localStorage.setItem(this.key, JSON.stringify(this.response));
   }
 
   subscribe(): void {
@@ -32,8 +43,12 @@ export class TerminalComponent extends SubscriptionDestroyer {
         .connect('', '', false)
         .subscribe((message: MessageEvent) => {
           const temp = [...this.response];
-          temp.push(JSON.parse(message.data));
+          const ocppObject = convertOCPPResponseToObject(
+            JSON.parse(message.data)
+          );
+          temp.push(ocppObject);
           this.response = temp.reverse();
+          this.saveLog();
         });
       this.AddSubscription(obs);
     }, 100);
@@ -41,6 +56,7 @@ export class TerminalComponent extends SubscriptionDestroyer {
 
   clear(): void {
     this.response = [];
+    localStorage.removeItem(this.key);
   }
 
   export(): void {}

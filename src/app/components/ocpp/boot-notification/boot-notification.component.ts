@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { createOCPPRequest } from 'src/app/helper/ocpp.helper';
+import { OCPPAction } from 'src/app/model/enum/ocpp.actions.enum';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -29,7 +31,10 @@ export class BootNotificationComponent {
   submit(): void {
     try {
       if (!this.form.valid) throw Error('Invalid Boot notification form');
-      if (this.messages) this.messages.next(this.form.value);
+      if (this.messages)
+        this.messages.next(
+          createOCPPRequest(OCPPAction.BootNotification, this.form.value)
+        );
     } catch (error: any) {
       alert(error.message);
     }
