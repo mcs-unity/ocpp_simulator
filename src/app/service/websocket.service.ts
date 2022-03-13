@@ -10,6 +10,8 @@ export class WebsocketService {
   private subject!: AnonymousSubject<MessageEvent>;
   private connected = new BehaviorSubject<Connection>(Connection.pending);
   $connected = this.connected.asObservable();
+  private message = new BehaviorSubject<any>(undefined);
+  $message = this.message.asObservable();
 
   error(): void {
     this.connected.next(Connection.error);
@@ -34,6 +36,7 @@ export class WebsocketService {
 
     let observer = {
       next: (data: Object) => {
+        this.message.next(data);
         if (ws.readyState == WebSocket.OPEN) ws.send(JSON.stringify(data));
       },
       error: () => {},

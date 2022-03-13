@@ -1,6 +1,6 @@
-import { OCPPRequest, OCPPError, OCPPResponse } from "./IOCPP.model";
+import { OCPPRequest, OCPPError, OCPPResponse } from './IOCPP.model';
 
 export interface ITerminalObject {
   request: OCPPRequest | OCPPError;
-  response: OCPPRequest | OCPPError | OCPPResponse;
+  response?: OCPPRequest | OCPPError | OCPPResponse;
 }
