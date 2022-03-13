@@ -1,0 +1,159 @@
+<div class="container-fluid p-0">
+  <form [formGroup]="form" class="row">
+    <div class="col-xxl-6 my-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Chargepoint vendor</mat-label>
+        <input
+          formControlName="chargePointVendor"
+          #chargePoint
+          matInput
+          required
+          maxlength="20"
+        />
+        <mat-hint>Enter the name of the charger brand</mat-hint>
+        <mat-error *ngIf="!form.controls['chargePointVendor'].valid"
+          >The brand of the charger is required</mat-error
+        >
+        <mat-hint [align]="'end'">{{ chargePoint.value.length }}/20</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-xxl-6 my-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Chargepoint model</mat-label>
+        <input
+          formControlName="chargePointModel"
+          #chargePointModel
+          matInput
+          required
+          maxlength="20"
+        />
+        <mat-hint>Enter the model of the charger</mat-hint>
+        <mat-error *ngIf="!form.controls['chargePointModel'].valid"
+          >The chargers model name is required</mat-error
+        >
+        <mat-hint [align]="'end'"
+          >{{ chargePointModel.value.length }}/20</mat-hint
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-xxl-6 my-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Chargepoint serial number</mat-label>
+        <input
+          formControlName="chargePointSerialNumber"
+          #chargePointSerialNumber
+          matInput
+          maxlength="25"
+        />
+        <mat-hint>Enter the serial number of the charger</mat-hint>
+        <mat-hint [align]="'end'"
+          >{{ chargePointSerialNumber.value.length }}/25</mat-hint
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-xxl-6 my-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Chargebox serial number</mat-label>
+        <input
+          formControlName="chargeBoxSerialNumber"
+          #chargeBoxSerialNumber
+          matInput
+          maxlength="25"
+        />
+        <mat-hint>Enter the serial number of the charger box</mat-hint>
+        <mat-hint [align]="'end'"
+          >{{ chargeBoxSerialNumber.value.length }}/25</mat-hint
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-xxl-6 my-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Firmware version</mat-label>
+        <input
+          formControlName="firmwareVersion"
+          #firmwareVersion
+          matInput
+          maxlength="50"
+        />
+        <mat-hint>Enter the firmware version (software version)</mat-hint>
+        <mat-hint [align]="'end'"
+          >{{ firmwareVersion.value.length }}/50</mat-hint
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-xxl-6 my-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>ICC ID</mat-label>
+        <input formControlName="iccid" #iccid matInput maxlength="20" />
+        <mat-hint>Enter the ICC ID</mat-hint>
+        <mat-hint [align]="'end'">{{ iccid.value.length }}/20</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-xxl-4 my-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>IMSI</mat-label>
+        <input formControlName="imsi" #imsi matInput maxlength="20" />
+        <mat-hint>Enter the International Mobile Subscriber Identity</mat-hint>
+        <mat-hint [align]="'end'">{{ imsi.value.length }}/20</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-xxl-4 my-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Meter type</mat-label>
+        <input formControlName="meterType" #meterType matInput maxlength="25" />
+        <mat-hint>Enter the meter type for the charger</mat-hint>
+        <mat-hint [align]="'end'">{{ meterType.value.length }}/25</mat-hint>
+      </mat-form-field>
+    </div>
+    <div class="col-xxl-4 my-3">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Meter serial number</mat-label>
+        <input
+          formControlName="meterSerialNumber"
+          #meterSerialNumber
+          matInput
+          maxlength="25"
+        />
+        <mat-hint>Enter the serial number of the meter</mat-hint>
+        <mat-hint [align]="'end'"
+          >{{ meterSerialNumber.value.length }}/25</mat-hint
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-12 mt-3">
+      <button
+        class="py-2 mx-2 text-start"
+        type="button"
+        (click)="clearForm()"
+        [color]="'primary'"
+        [matTooltip]="'Info about the action'"
+        [matTooltipShowDelay]="toolTipDelay"
+        mat-raised-button
+      >
+        Clear form
+      </button>
+      <div class="d-inline-block float-end">
+        <button
+          class="py-2 mx-2"
+          type="button"
+          [color]="'primary'"
+          [matTooltip]="'Info about the action'"
+          [matTooltipShowDelay]="toolTipDelay"
+          mat-raised-button
+        >
+          Set default settings
+        </button>
+        <button
+          class="py-2 ms-2"
+          (click)="submit()"
+          [color]="'primary'"
+          [matTooltip]="'Info about the action'"
+          [matTooltipShowDelay]="toolTipDelay"
+          mat-raised-button
+        >
+          Send boot notification
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

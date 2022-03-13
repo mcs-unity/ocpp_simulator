@@ -1,60 +1,20 @@
-<p class="mb-3">
-  <mat-toolbar>
-    <button mat-icon-button class="mx-4">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>MCS UNITY</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button>
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="mx-4">
-      <mat-icon>share</mat-icon>
-    </button>
-  </mat-toolbar>
-</p>
+<mat-progress-bar
+  *ngIf="isLoading"
+  class="fixed top w-100"
+  [mode]="'indeterminate'"
+></mat-progress-bar>
+<router-outlet></router-outlet>
 
-<mat-card class="container my-3">
-  <div class="row">
-    <div class="col-lg-3">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Enter Charger name</mat-label>
-        <input type="text" matInput placeholder="Ex. char13" />
-      </mat-form-field>
+<div class="container-fluid w-100 fixed bottom" [class.f-white]="isSplash">
+  <div class="row mx-2" style="font-size: 10px">
+    <div class="col-6">
+      <p class="my-2 bold">version {{ version }}</p>
     </div>
-    <div class="col-lg-4 flex-center">
-      <mat-slide-toggle class="mx-5">Connected</mat-slide-toggle>
-      <mat-slide-toggle>Maintenance</mat-slide-toggle>
-    </div>
-    <div class="col-lg-3">
-      <mat-form-field class="w-100" appearance="outline">
-        <mat-label>Charger state</mat-label>
-        <mat-select>
-          <mat-option value="available">Available</mat-option>
-          <mat-option value="preparing">Preparing</mat-option>
-          <mat-option value="charging">Charging</mat-option>
-          <mat-option value="error">Error</mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <div class="col-lg-2 flex-center">
-      <button mat-button class="m-auto">
-        <mat-icon>add</mat-icon>
-      </button>
+    <div class="col-6 text-end">
+      <p class="my-2 bold">
+        Copyright all rights reserved MCS Unity Co.,LTD
+        {{ date | DateTime: "YYYY" }}
+      </p>
     </div>
   </div>
-</mat-card>
-
-<mat-card class="container px-4 py-2">
-  <div class="row">
-    <div *ngFor="let item of chargers" class="col-lg-2">
-      <app-charger></app-charger>
-    </div>
-  </div>
-  <mat-paginator
-    [length]="100"
-    [pageSize]="10"
-    [pageSizeOptions]="[5, 10, 25, 100]"
-  >
-  </mat-paginator>
-</mat-card>
+</div>

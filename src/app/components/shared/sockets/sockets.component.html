@@ -1,0 +1,51 @@
+<div class="container-fluid p-0 my-3">
+  <div class="row">
+    <div class="col-12">
+      <button
+        class="py-2"
+        [color]="'primary'"
+        [matTooltip]="'Info about the action'"
+        [matTooltipShowDelay]="toolTipDelay"
+        mat-raised-button
+        (click)="addSocket()"
+      >
+        Add charging socket
+      </button>
+    </div>
+  </div>
+  <div class="row my-2">
+    <div class="col-12">
+      <mat-card id="sockets" class="col-12">
+        <owl-carousel-o [options]="customOptions">
+          <ng-template
+            carouselSlide
+            *ngFor="let socket of sockets; let i = index"
+          >
+            <mat-card
+              [class.active]="selected == socket"
+              (click)="selectSocket(socket)"
+              class="socket row d-inline-flex align-items-center"
+            >
+              <div class="col-5">
+                <p class="m-0 bold">{{ socket.name }}</p>
+              </div>
+              <div class="col-7 text-end p-0">
+                <p class="m-0 bold d-inline-block">
+                  <span class="d-inline-flex align-items-center">
+                    {{ socket.state
+                    }}<span
+                      class="mx-2 dot {{ socket.state.toLowerCase() }}"
+                    ></span>
+                  </span>
+                </p>
+                <button mat-icon-button (click)="removeSocket(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </div>
+            </mat-card>
+          </ng-template>
+        </owl-carousel-o>
+      </mat-card>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,84 @@
+<div class="container-fluid p-0">
+  <form [formGroup]="form" class="row d-flex align-items-top">
+    <div class="col-xxl-5 col-lg-auto">
+      <mat-form-field class="w-100" appearance="outline">
+        <mat-label>Enter domain to central station</mat-label>
+        <input
+          formControlName="url"
+          matInput
+          placeholder="wss://domain.com/ocpp/charger1"
+          required
+        />
+        <mat-hint
+          >Enter the domain using wss:// to connect to the websocket</mat-hint
+        >
+        <mat-error *ngIf="!form.controls['url'].valid"
+          >Input a valid url with the following wss://</mat-error
+        >
+      </mat-form-field>
+    </div>
+    <div class="col-xxl-4 col-lg-auto mt-3">
+      <mat-slide-toggle
+        #rememberToggle
+        formControlName="remember"
+        [color]="'primary'"
+        class="mx-2"
+        (toggleChange)="remember(rememberToggle)"
+        [matTooltipShowDelay]="toolTipDelay"
+        [matTooltip]="'Info about the action'"
+        >Remember domain</mat-slide-toggle
+      >
+      <mat-slide-toggle
+        [color]="'primary'"
+        class="mx-2"
+        [matTooltipShowDelay]="toolTipDelay"
+        [matTooltip]="'Info about the action'"
+        [disabled]="true"
+      >
+        Simulator
+      </mat-slide-toggle>
+    </div>
+    <div class="col-xxl-3 col-lg-auto text-end">
+      <button
+        class="py-2"
+        (click)="submit()"
+        [color]="'primary'"
+        [matTooltip]="'Info about the action'"
+        [matTooltipShowDelay]="toolTipDelay"
+        mat-raised-button
+      >
+        {{ connected ? "Disconnect client" : "Connect to central" }}
+      </button>
+    </div>
+  </form>
+</div>
+
+<app-sockets></app-sockets>
+
+<div class="contianer-fluid p-0">
+  <div class="row">
+    <div class="col-12">
+      <mat-tab-group>
+        <mat-tab label="Boot Notification">
+          <mat-card class="command-card mt-2">
+            <app-boot-notification
+              [messages]="messages"
+            ></app-boot-notification>
+          </mat-card>
+        </mat-tab>
+        <mat-tab label="Transactions">
+          <mat-card class="command-card mt-2"></mat-card>
+        </mat-tab>
+        <mat-tab label="Status Notification">
+          <mat-card class="command-card mt-2"></mat-card>
+        </mat-tab>
+        <mat-tab label="Heartbeat">
+          <mat-card class="command-card mt-2"></mat-card
+        ></mat-tab>
+        <mat-tab label="Error">
+          <mat-card class="command-card mt-2"></mat-card>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</div>

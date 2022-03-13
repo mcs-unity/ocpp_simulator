@@ -1,35 +1,145 @@
 /* You can add global styles to this file, and also import other style files */
+@import "./theme.scss";
 
-$green: #00c300;
-$yellow: #fef6d8;
-$red: #c0392b;
-$veryLightGray: #f7f7f7;
 $white: #fff;
+$gray: #f2f2f2;
+$darkGray: #8c8c8c;
+$dark: #000000;
+$purple: #231520;
+$green: #19ca8a;
+$yellow: #eed811;
+$red: #c10c0c;
+$fontFamily: "Orbitron", sans-serif;
+$fontSize: 14px;
 
-html,
-body {
-  height: 100%;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  background: $veryLightGray;
+body,
+html {
+  font-family: $fontFamily !important;
+  font-size: $fontSize;
+  background-color: $gray;
 }
 
-.flex-center {
-  display: flex;
-  align-items: center;
+h3 {
+  font-size: 18px;
 }
 
-.example-spacer {
+ul {
+  list-style: none;
+}
+
+a {
+  color: $darkGray;
+  text-decoration: none;
+  font-size: $fontSize;
+}
+
+.ui {
+  padding: 0 5px;
+  height: 87vh;
+}
+
+.link:hover,
+.link:focus {
+  color: $dark;
+}
+
+.selected {
+  color: $dark;
+  border-bottom: 2px solid $green;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.full-height {
+  height: 100vh;
+}
+
+.spacer {
   flex: 1 1 auto;
 }
 
-.mat-toolbar {
-  background: $white;
-  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+.fixed {
+  position: fixed;
+  left: 0;
+  z-index: 99;
 }
 
-.mat-form-field-wrapper {
-  padding: 0;
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
+}
+
+.f-white {
+  color: $white;
+}
+
+.background-purple {
+  background-color: $purple;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.connected,
+.available {
+  background-color: $green;
+}
+
+.pending {
+  background-color: $yellow;
+}
+
+.error,
+.rejected {
+  background-color: $red;
+}
+
+// JSON viewer
+
+.ngx-json-viewer {
+  max-height: 68vh;
+  overflow-y: auto !important;
+}
+
+.segment-key {
+  color: $white !important;
+}
+.segment-type-boolean > .segment-main > .segment-value {
+  color: $white !important;
+}
+.segment-type-string > .segment-main > .segment-value {
+  color: $white !important;
+}
+.segment-type-number > .segment-main > .segment-value {
+  color: $white !important;
+}
+
+// Owl carousel
+.owl-theme .owl-nav [class*="owl-"] {
+  background: $purple !important;
+}
+
+.owl-nav {
+  margin: 0 !important;
+}
+
+.owl-prev {
+  position: absolute !important;
+  top: 12px;
+  left: -25px;
+}
+
+.owl-next {
+  position: absolute !important;
+  top: 12px;
+  right: -25px;
 }

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  CHAT_URL: 'ws://localhost:8080/ocpp',
+  version: '1.0.0-alpha',
+  toolTipDelay: 1000,
 };
 
 /*

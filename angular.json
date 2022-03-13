@@ -1,12 +1,9 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "cli": {
-    "analytics": "c98fbe68-eb5c-4744-a4be-e19edb8965c0"
-  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "src": {
+    "ocpp": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/src",
+            "outputPath": "dist/ocpp",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -34,7 +31,9 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -44,8 +43,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2500kb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -76,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "src:build:production"
+              "browserTarget": "ocpp:build:production"
             },
             "development": {
-              "browserTarget": "src:build:development"
+              "browserTarget": "ocpp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "src:build"
+            "browserTarget": "ocpp:build"
           }
         },
         "test": {
@@ -103,7 +102,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -112,5 +111,5 @@
       }
     }
   },
-  "defaultProject": "src"
+  "defaultProject": "ocpp"
 }

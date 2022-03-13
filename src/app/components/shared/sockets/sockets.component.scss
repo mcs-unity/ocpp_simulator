@@ -1,0 +1,20 @@
+@import "../../../../styles.scss";
+
+#sockets {
+  min-height: 92px;
+}
+
+.socket {
+  width: 95% !important;
+  margin: auto;
+  margin: 5px auto !important;
+  padding: 5px !important;
+}
+
+.socket:hover,
+.socket:focus,
+.active {
+  cursor: pointer;
+  background-color: $purple;
+  color: $white;
+}
