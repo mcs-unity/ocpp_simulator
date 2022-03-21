@@ -74,7 +74,7 @@ export class OcppComponent extends SubscriptionDestroyer {
     try {
       if (!this.form.valid) throw Error('Invalid websocket URL');
       this.messages = <Subject<string>>(
-        this.websocket.connect(this.url, 'ocpp-1.6').pipe(
+        this.websocket.connect(this.url, 'ocpp1.6').pipe(
           map(
             (response: MessageEvent): any => {
               return response;

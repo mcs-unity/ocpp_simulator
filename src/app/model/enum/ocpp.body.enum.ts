@@ -1,5 +1,5 @@
 export enum OCPP {
-  CALL = 1,
+  CALL = 2,
   CALLRESULT,
   CALLERROR,
 }
